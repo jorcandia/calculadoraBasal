@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
         const peso = parseFloat(pesoInput.value);
         const multiplicador = parseFloat(multiplicadorSelect.value);
 
-        if (!isNaN(peso) && peso >= 0 && (multiplicador === 1500 || multiplicador === 2000)) {
+        if (!isNaN(peso) && peso > 0 && (multiplicador === 1500 || multiplicador === 2000)) {
             let volumenDiario = 0;
             let mantenimiento = 0;
             let mMasM2 = 0;
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
             resultadoMM2.textContent = `m+m/2: ${mMasM2}cc/h`;
             resultadoMetodo.textContent = `Método utilizado: ${metodo}`;
         } else {
-            alert('Por favor, ingrese un peso válido y seleccione un multiplicador de 1500 o 2000.');
+            alert('Por favor, ingrese un peso válido');
         }
     });
 });
