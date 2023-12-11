@@ -34,24 +34,29 @@ document.addEventListener('DOMContentLoaded', function () {
                 mantenimiento = Math.round(hidratacion / 24);
                 mMasM2 = Math.round(mantenimiento * 1.5);
                 metodo = 'Holliday-Segar';
+                //resultados holliday-segar
+                resultadoMantenimiento.style.display = 'block';
+                resultadoMM2.style.display = 'block';
+                resultadoVolumenDiario.textContent = `Volumen diario: ${volumenDiario}cc/h`;
+                resultadoMantenimiento.textContent = `Mantenimiento: ${mantenimiento}cc/h`;
+                resultadoMM2.textContent = `m+m/2: ${mMasM2}cc/h`;
+                resultadoMetodo.textContent = `Método utilizado: ${metodo}`;
             } else {
                 // Método de superficie corporal
                 const superficieCorporal = ((peso * 4) + 7) / (peso + 90);
+                volumenDiario = Math.round(superficieCorporal * multiplicador);
 
-                // Calculo superficie corporal
-                volumenDiario = multiplicador * superficieCorporal;
-                mantenimiento = Math.round(volumenDiario / 24);
-                console.log(mantenimiento);
-                mMasM2 = Math.round(mantenimiento * 1.5);
-                console.log(mMasM2);
-                metodo = 'Superficie Corporal';
+                // resultados superficie corporal
+                resultadoVolumenDiario.textContent = `Volumen diario: ${volumenDiario}cc/h`;
+                resultadoMantenimiento.style.display = 'none';
+                resultadoMM2.style.display = 'none';
+                resultadoMetodo.textContent = `Método utilizado: ${metodo}`;
+                
+                
+
+
             }
 
-            // Resultados
-            resultadoVolumenDiario.textContent = `Volumen diario: ${volumenDiario.toFixed(2)}cc/h`;
-            resultadoMantenimiento.textContent = `Mantenimiento: ${mantenimiento}cc/h`;
-            resultadoMM2.textContent = `m+m/2: ${mMasM2}cc/h`;
-            resultadoMetodo.textContent = `Método utilizado: ${metodo}`;
         } else {
             alert('Por favor, ingrese un peso válido');
         }
